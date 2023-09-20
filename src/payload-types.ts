@@ -10,7 +10,6 @@ export interface Config {
   collections: {
     assets: Asset;
     users: User;
-    services: Service;
     textPromotions: TextPromotion;
     imagePromotions: ImagePromotion;
   };
@@ -18,7 +17,7 @@ export interface Config {
 }
 export interface Asset {
   id: string;
-  actionUrl: string;
+  actionUrl?: string;
   updatedAt: string;
   createdAt: string;
   url?: string;
@@ -41,13 +40,6 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password?: string;
-}
-export interface Service {
-  id: string;
-  serviceName: string;
-  themeColor?: string;
-  updatedAt: string;
-  createdAt: string;
 }
 export interface TextPromotion {
   id: string;
