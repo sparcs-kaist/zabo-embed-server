@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import { TextBanner } from "zabo-embed";
+import {
+  useAllFormFields,
+  reduceFieldsToValues,
+} from "payload/components/forms";
+import { services } from "../constants/services";
 
 export const TextBannerPreview: React.FC = () => {
-  // TODO
+  const [fields] = useAllFormFields();
+  const data = useMemo(() => reduceFieldsToValues(fields), [fields]);
+
   return (
-    <div style={{width: 400}}>
+    <div style={{ width: 400 }}>
       <TextBanner
-        mainText="지금은 새학기 동아리 모집 시즌"
-        subText="어느 동아리가 모집중인지 알고 싶다면?"
-        serviceName="Zabo"
+        mainText={data.mainText}
+        subText={data.subText}
+        serviceName={data.service}
         style={{
-          primary: true,
-          themeColor: "#1C3340",
+          primary: data["style.primary"],
+          themeColor: data["style.overrideThemeColor"] ||
+            services[data.service]?.themeColor,
         }}
-        actionURL="https://zabo.sparcs.org"
-        actionText="자보 바로가기"
+        actionURL={data["action.actionUrl"] || services[data.service]?.url}
+        actionText={data["action.actionText"]}
       />
     </div>
   );
