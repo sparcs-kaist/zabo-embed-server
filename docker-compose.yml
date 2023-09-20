@@ -1,35 +1,29 @@
 version: '3'
 
 services:
-
   payload:
-    image: node:18-alpine
+    build: .
     ports:
-      - "3000:3000"
+      - "${ZABO_EMBED_PORT}:3000"
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
+      - ./assets:/home/node/app/assets
     depends_on:
       - mongo
     environment:
       MONGODB_URI: mongodb://mongo:27017/payload
-      PORT: 3000
-      NODE_ENV: development
-      PAYLOAD_SECRET: TESTING
+      PORT: ${ZABO_EMBED_PORT}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
 
   mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
+    image: mongo:5.0
     command:
       - --storageEngine=wiredTiger
     volumes:
-      - data:/data/db
+      - zabo-embed-data:/data/db
     logging:
       driver: none
 
 volumes:
-  data:
-  node_modules:
+  zabo-embed-data:
+    external: true
+
