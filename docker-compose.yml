@@ -11,6 +11,7 @@ services:
       - mongo
     environment:
       MONGODB_URI: mongodb://mongo:27017/payload
+      SERVER_URL: ${SERVER_URL}
       PORT: ${ZABO_EMBED_PORT}
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
 
