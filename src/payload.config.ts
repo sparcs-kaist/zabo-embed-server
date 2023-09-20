@@ -9,7 +9,7 @@ import {
 import { getRandomPromotion } from "./handlers/promotions";
 
 export default buildConfig({
-  serverURL: "http://localhost:3000",
+  serverURL: process.env.SERVER_URL ?? "http://localhost:3000",
   cors: "*",
   admin: {
     user: Users.slug,
