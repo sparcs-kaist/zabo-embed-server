@@ -23,7 +23,7 @@
     "payload": "^1.13.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "zabo-embed": "^0.0.2"
+    "zabo-embed": "^0.0.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
