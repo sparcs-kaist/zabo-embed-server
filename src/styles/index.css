@@ -1,0 +1,9 @@
+@media (min-width: 1025px) {
+    .collection-edit__main {
+        width: calc(100% - 36.2rem);
+    }
+
+    .collection-edit__sidebar-wrap {
+        width: 36.2rem;
+    }
+}
