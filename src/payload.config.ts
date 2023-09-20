@@ -9,7 +9,7 @@ import {
 import { getRandomPromotion } from "./handlers/promotions";
 
 export default buildConfig({
-  serverURL: process.env.SERVER_URL ?? "http://localhost:3000",
+  serverURL: "https://embed.zabo.sparcs.org",
   cors: "*",
   admin: {
     user: Users.slug,
